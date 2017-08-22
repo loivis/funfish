@@ -29,8 +29,7 @@ function fish_right_prompt
 
     echo -e " | "
 
-    set -l user (id -un $USER)
     set -l host_name (hostname -s)
-    __print_color 555 "$user@$host_name"
+    __print_color 555 "$host_name"
 
 end

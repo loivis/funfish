@@ -1,7 +1,39 @@
-# Simple
-# https://github.com/sotayamashita/simple
-#
-# MIT © Sota Yamashita
+# https://github.com/loivis/funfish
+
+function fish_prompt -d "Evolving Fish Prompt"
+    set -l last_status $status
+    set -g left_prompt_length 0
+
+    set_color -b black
+    __set_user
+    printf " "
+    __set_pwd
+    printf " "
+    __set_git
+    printf "\e[K\n"
+    set_color normal
+    set_color green
+    printf "⌨  "
+    set_color normal
+end
+
+function __set_user
+    set -l user (id -un $USER)
+    set_color white
+    printf $user
+    __update_left_prompt_length $user
+end
+
+function __set_pwd
+    set -l pwd (echo $PWD | sed 's|^'$HOME'\(.*\)$|~\1|')
+    set_color cyan
+    printf "$pwd"
+    __update_left_prompt_length $pwd
+end
+
+function __update_left_prompt_length
+    set left_prompt_length (math "$left_prompt_length + "(echo "$argv" | wc -c))
+end
 
 function __git_upstream_configured
     git rev-parse --abbrev-ref @"{u}" > /dev/null 2>&1
@@ -13,25 +45,16 @@ function __print_color
 
     set_color $color
     printf $string
-    set_color normal
 end
 
-function fish_prompt -d "Simple Fish Prompt"
-    echo -e ""
-    set -l pwd_string (echo $PWD | sed 's|^'$HOME'\(.*\)$|~\1|')
-
-    __print_color ffffff "$pwd_glyph"
-    __print_color 5DAE8B "$pwd_string"
-
-
-    # Git
-    #
+function __set_git
     if git_is_repo
         set -l branch_name (git_branch_name)
         set -l git_branch_glyph
 
-        __print_color ffffff " ["
-        __print_color 6597ca "$branch_name"
+        __print_color white "["
+        __print_color blue "$branch_name"
+        __update_left_prompt_length "$branch_name"
 
         if git_is_touched
             if git_is_staged
@@ -43,6 +66,7 @@ function fish_prompt -d "Simple Fish Prompt"
             else
                 set git_branch_glyph " ?"
             end
+            set left_prompt_length (math "$left_prompt_length + 2")
         end
 
         __print_color 6597ca "$git_branch_glyph"
@@ -58,8 +82,6 @@ function fish_prompt -d "Simple Fish Prompt"
             end
         end
 
-        __print_color ffffff "]"
+        __print_color white "]"
     end
-
-    __print_color FF7676 "\e[K\n❯ "
 end
