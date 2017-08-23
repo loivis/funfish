@@ -55,7 +55,7 @@ end
 function __set_right_prompt
     set -l right_prompt (__get_right_prompt)
     # remove color before caculating length
-    set -l right_prompt_clean (printf "$right_prompt" | sed -r "s:\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[mK]::g")
+    set -l right_prompt_clean (printf "$right_prompt" | sed "s:\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[mK]::g")
     # printf "$right_prompt_clean"
     set space_count (math "$COLUMNS - $left_prompt_length - "(echo "$right_prompt_clean" | wc -c)"")
     printf "%-"$space_count"s%s" " "
