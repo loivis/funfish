@@ -5,8 +5,8 @@ set -g GOPATH "$CODE_BASE/go"
 
 # PATH #
 ########
-set -U PATH $GOPATH/bin $PATH
-set -U PATH /usr/local/lib/node_modules $PATH
+set PATH $GOPATH/bin $PATH
+set PATH /usr/local/lib/node_modules $PATH
 
 # common #
 ##########
