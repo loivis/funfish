@@ -5,8 +5,9 @@ set -g GOPATH "$CODE_BASE/go"
 
 # PATH #
 ########
+mkdir -p $GOPATH/ $GOPATH/bin
 set PATH $GOPATH/bin $PATH
-set PATH /usr/local/lib/node_modules $PATH
+# set PATH /usr/local/lib/node_modules $PATH
 
 # common #
 ##########
