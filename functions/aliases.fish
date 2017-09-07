@@ -35,7 +35,10 @@ end
 
 # code #
 ########
+# path
 alias coding='cd $CODE_BASE'
 alias gogo="mkdir -p $GOPATH; and cd $GOPATH"
 alias gopy='cd $CODE_BASE/python/'
 alias gosh='cd $CODE_BASE/shell/'
+# vscode
+alias codefish='code ~/code/shell/github.com/loivis/funfish/'

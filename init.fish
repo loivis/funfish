@@ -38,6 +38,7 @@ end
 # source #
 ##########
 source $HOME/.config/fish/functions/aliases.fish
+source $HOME/.config/fish/functions/tingcore.fish
 
 ################################################################################
 if [ ]
