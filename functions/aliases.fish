@@ -20,9 +20,12 @@ alias ..5="cd ../../../../.."
 # git #
 #######
 alias gadd='git pull;git add'
+alias gcheckout='git checkout'
 alias gdiff='git diff -w --ignore-blank-lines'
 alias glog='git log --stat'
 alias gpull='git pull'
+alias gspop='git stash pop'
+alias gstash='git stash'
 alias gstatus='git status'
 function gcommit
     git pull
