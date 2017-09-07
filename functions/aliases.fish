@@ -7,6 +7,7 @@ alias pwgen='pwgen -1Bc 16'
 # docker #
 ##########
 alias sqlplus='docker run --rm -it loivis/sqlplus'
+alias cqlsh='docker run --rm -it loivis/cqlsh'
 
 # directory #
 #############
@@ -37,6 +38,7 @@ end
 ########
 # path
 alias coding='cd $CODE_BASE'
+alias godocker='cd $CODE_BASE/docker'
 alias gogo="mkdir -p $GOPATH; and cd $GOPATH"
 alias gopy='cd $CODE_BASE/python/'
 alias gosh='cd $CODE_BASE/shell/'
