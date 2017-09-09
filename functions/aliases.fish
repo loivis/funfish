@@ -21,14 +21,14 @@ alias ..5="cd ../../../../.."
 # git #
 #######
 alias gadd='git pull;git add'
-alias gcheckout='git checkout'
-alias gdiff='git diff -w --ignore-blank-lines'
-alias glog='git log --stat'
-alias gpull='git pull'
-alias gspop='git stash pop'
-alias gstash='git stash'
-alias gstatus='git status'
-function gcommit
+alias geck='git checkout'
+alias giff='git diff -w --ignore-blank-lines'
+alias gog='git log --stat'
+alias gull='git pull'
+alias gop='git stash pop'
+alias gash='git stash'
+alias gatus='git status'
+function gommit
     git pull
     git commit -m "$argv[1]"
     git push
