@@ -22,12 +22,15 @@ alias ..5="cd ../../../../.."
 #######
 alias gadd='git pull;git add'
 alias geck='git checkout'
+alias gmaster='git checkout master'
 alias giff='git diff -w --ignore-blank-lines'
 alias gog='git log --stat'
 alias gull='git pull'
 alias gop='git stash pop'
 alias gash='git stash'
 alias gatus='git status'
+alias gush='git push'
+alias gushbranch='git push -u origin'
 function gommit
     git pull
     git commit -m "$argv[1]"
