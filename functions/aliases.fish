@@ -6,8 +6,8 @@ alias pwgen='pwgen -1Bc 16'
 
 # docker #
 ##########
-alias sqlplus='docker run --rm -it loivis/sqlplus'
-alias cqlsh='docker run --rm -it loivis/cqlsh --cqlversion=3.4.0'
+alias sqlplus='docker pull loivis/sqlplus; docker run --rm -it loivis/sqlplus'
+alias cqlsh='docker pull loivis/cqlsh >/dev/null; and docker run --rm -it loivis/cqlsh --cqlversion=3.4.0'
 
 # directory #
 #############
