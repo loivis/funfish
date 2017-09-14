@@ -45,8 +45,8 @@ function ec2ins -d 'list ec2 instances and connect if there is only one'
     # list/filter instances and connect if only one match
     set instances (aws ec2 describe-instances --region eu-west-1 \
         --filters "Name=instance-state-name,Values=running" \
-        --query 'Reservations[].Instances[].[PrivateIpAddress,InstanceId,Tags[?Key==`Name`].Value[]|[0]]' \
-        --output text | sort -k3 )
+        --query 'Reservations[].Instances[].[PrivateIpAddress,InstanceId,LaunchTime,InstanceType,KeyName,Tags[?Key==`Name`].Value[]|[0]]' \
+        --output text | sort -k6 )
     for ins in $instances
         test $list_all -eq 1
         and echo $ins
@@ -75,10 +75,11 @@ function ec2ins -d 'list ec2 instances and connect if there is only one'
                 end
             end
         case '*'
-            # echo "match: ≥1"
+            echo >/tmp/ec2_instances
             for m in $match
-                echo $m
+                echo $m >>/tmp/ec2_instances
             end
+            column -t /tmp/ec2_instances
             if [ $index ]
                 set -l host (echo $match[$index] | awk '{print $1}')
                 for user in $users
