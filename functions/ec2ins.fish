@@ -78,7 +78,7 @@ function __connect -d "ssh connect to instance"
         echo -e "\nconnecting to $host as $user\n"
         echo -e "\n################################################################################\n"
         # echo $ssh_options
-        ssh $ssh_options $user@$host
+        ssh $ssh_options -l $user $host
     end
 end
 
