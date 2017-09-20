@@ -1,4 +1,5 @@
 function bitall -d "pull all bitbucket repositories"
+    set -l STARTING $PWD
     set -l BUCKET_BASE $HOME/code/tingcore
     set -l projects aws jenkins
 
@@ -14,4 +15,5 @@ function bitall -d "pull all bitbucket repositories"
         end
     end
 
+    cd $STARTING
 end
