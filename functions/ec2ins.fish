@@ -52,7 +52,7 @@ function ec2ins -d 'list ec2 instances and connect if there is only one'
             or echo "no match"
         case '1'
             echo $match
-            __connect $match
+            connect $match
         case '*'
             echo >/tmp/ec2_instances
             for m in $match
@@ -60,19 +60,19 @@ function ec2ins -d 'list ec2 instances and connect if there is only one'
             end
             column -t /tmp/ec2_instances
             if [ $index ]
-                __connect $match[$index]
+                connect $match[$index]
             end
     end
 end
 
-function __connect -d "ssh connect to instance"
+function connect -d "ssh connect to instance"
     set -l match $argv[1]
     set -l host (echo $match | awk '{print $1}')
     set -l instance_id (echo $match | awk '{print $2}')
     set -l image_id (echo $match | awk '{print $3}')
     set -g identity $HOME/.ssh/(echo $match | awk '{print $6}').pem
     set -g ssh_options $ssh_options -i $identity
-    __set_user $image_id
+    set_user $image_id
     if [ $status = 0 ]
         echo -e "\n################################################################################\n"
         echo -e "\nconnecting to $host as $user\n"
@@ -82,7 +82,7 @@ function __connect -d "ssh connect to instance"
     end
 end
 
-function __set_user -d "description"
+function set_user -d "description"
     set -l image_id $argv[1]
     set -l image_name (aws ec2 describe-images --image-id $image_id --query 'Images[0].Name' --output text)
     switch $image_name
