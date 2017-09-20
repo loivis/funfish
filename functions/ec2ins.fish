@@ -52,7 +52,7 @@ function ec2ins -d 'list ec2 instances and connect if there is only one'
             or echo "no match"
         case '1'
             echo $match
-            __connect $match[$index]
+            __connect $match
         case '*'
             echo >/tmp/ec2_instances
             for m in $match
