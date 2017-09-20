@@ -1,4 +1,4 @@
-function all_buckets -d "pull all bitbucket repositories"
+function bitall -d "pull all bitbucket repositories"
     set -l BUCKET_BASE $HOME/code/tingcore
     set -l projects aws jenkins
 
