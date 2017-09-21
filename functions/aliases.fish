@@ -6,9 +6,10 @@ alias pwgen='pwgen -1Bc 16'
 
 # docker #
 ##########
-alias dangling='docker images -f dangling=true -aq | xargs docker rmi -f'
-alias sqlplus='docker pull loivis/sqlplus >/dev/null; docker run --rm -it loivis/sqlplus'
 alias cqlsh='docker pull loivis/cqlsh >/dev/null; and docker run --rm -it loivis/cqlsh --cqlversion=3.4.0'
+alias dangling='docker images -f dangling=true -aq | xargs docker rmi -f'
+alias mongo='docker run --rm -it mongo mongo'
+alias sqlplus='docker pull loivis/sqlplus >/dev/null; and docker run --rm -it loivis/sqlplus'
 
 # directory #
 #############
