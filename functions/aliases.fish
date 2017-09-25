@@ -23,6 +23,7 @@ alias ..5="cd ../../../../.."
 # git #
 #######
 alias gadd='git pull;git add'
+alias gamend='git commit --amend --no-edit; and git push -f'
 alias geck='git checkout'
 alias gmaster='git checkout master'
 alias giff='git diff -w --ignore-blank-lines'
