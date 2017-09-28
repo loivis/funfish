@@ -35,6 +35,11 @@ if [ ! -e ~/.vim/autoload/pathogen.vim ]
     #pip3 install jedi && git clone https://github.com/davidhalter/jedi-vim.git ~/.vim/bundle/jedi-vim
 end
 
+# git #
+#######
+git config --global core.excludesfile ~/.gitignore_global
+git config --global push.default simple
+
 ################################################################################
 if [ ]
     echo "those shall NEVER be executed"
