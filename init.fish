@@ -35,11 +35,6 @@ if [ ! -e ~/.vim/autoload/pathogen.vim ]
     #pip3 install jedi && git clone https://github.com/davidhalter/jedi-vim.git ~/.vim/bundle/jedi-vim
 end
 
-# source #
-##########
-source $HOME/.config/fish/functions/aliases.fish
-source $HOME/.config/fish/functions/tingcore.fish
-
 ################################################################################
 if [ ]
     echo "those shall NEVER be executed"
