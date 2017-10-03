@@ -36,7 +36,7 @@ alias gushbranch='git push -u origin'
 function gommit
     git pull
     git commit -m "$argv[1]"
-    git push
+    git push -f
 end
 
 # code #
@@ -44,7 +44,7 @@ end
 # path
 alias coding='cd $CODE_BASE'
 alias godocker='cd $CODE_BASE/docker'
-alias gogo="mkdir -p $GOPATH; and cd $GOPATH"
+alias gogo='mkdir -p $GOPATH; and cd $GOPATH'
 alias gopy='cd $CODE_BASE/python/'
 alias gosh='cd $CODE_BASE/shell/'
 # vscode
