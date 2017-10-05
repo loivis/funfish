@@ -1,8 +1,9 @@
+alias download='cd ~/download'
 alias hej='fuck'
-alias ssh='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
 alias lla='ls -al'
-alias tailf='tail -f'
 alias pwgen='pwgen -1Bc 16'
+alias ssh='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
+alias tailf='tail -f'
 
 # docker #
 ##########
