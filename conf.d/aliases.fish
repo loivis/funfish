@@ -4,6 +4,7 @@ alias lla='ls -al'
 alias pwgen='pwgen -1Bc 16'
 alias ssh='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
 alias tailf='tail -f'
+alias tmp='cd /tmp'
 
 # docker #
 ##########
@@ -27,7 +28,7 @@ alias gamend='git commit --amend --no-edit; and git push -f'
 alias geck='git checkout'
 alias gmaster='git checkout master'
 alias giff='git diff -w --ignore-blank-lines'
-alias gog='git log --stat'
+alias gog='git log --stat -1'
 alias gull='git pull'
 alias gop='git stash pop'
 alias gash='git stash'

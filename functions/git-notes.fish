@@ -17,5 +17,11 @@ git push -d origin branch/name
 #git remote prune origin
 #git fetch origin --prune
 
+# remove from the working tree: untracked files, directories, ignored files, ignored and non-ignored files
+git clean -f
+git clean -fd
+git clean -fX
+git clean -fx
+
 '
 end
