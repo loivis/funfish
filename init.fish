@@ -1,7 +1,7 @@
 # variable #
 ############
 set -g CODE_BASE "$HOME/code"
-set -g GOPATH "$CODE_BASE/go"
+set -g GOPATH "$HOME/go"
 
 # PATH #
 ########

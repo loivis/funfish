@@ -1,11 +1,6 @@
 function mongo -d "connect to remote mongodb"
-    set -l host $mongo_host 127.0.0.1
+    set -l host $mongo_host (ifconfig | grep "broadcast" | awk '{print $2}')
     set -l port $mongo_port 27017
-
-    if test (count $host) -eq 1 -a (count $port) -eq 1
-        echo "host/port not set"
-        return
-    end
 
     set -l count (math (string length $host[1]) + (string length $port[1]) + 3)
     printf "\n%-"$count"s%s\n\n" | tr " " "#"
