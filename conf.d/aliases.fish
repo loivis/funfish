@@ -23,22 +23,22 @@ alias ..5="cd ../../../../.."
 
 # git #
 #######
-alias gadd='git pull;git add'
+alias gadd='git stash; and git pull --rebase; and git stash pop; and git add'
 alias gamend='git commit --amend --no-edit; and git push -f'
 alias geck='git checkout'
 alias gmaster='git checkout master'
 alias giff='git diff -w --ignore-blank-lines'
 alias gog='git log --stat -1'
-alias gull='git pull'
+alias gull='git pull --rebase'
 alias gop='git stash pop'
 alias gash='git stash'
 alias gatus='git status'
 alias gush='git push'
 alias gushbranch='git push -u origin'
 function gommit
-    git pull
-    git commit -m "$argv[1]"
-    git push -f
+    git pull;
+    and git commit -m "$argv[1]";
+    and git push -f
 end
 
 # code #

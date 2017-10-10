@@ -11,11 +11,11 @@ aws ec2 describe-images --owners "099720109477" --filters Name="root-device-type
       --query "sort_by(Images, &CreationDate)[-1].ImageId" --output=text
 
 # latest centos 7 ami
-aws ec2 describe-images --filter Name="name",Values="CentOS Linux 7 x86_64 HVM EBS 1704*" Name="product-code",Values="aw0evgkw8e5c1q413zgy5pjce" \
-    --query "Images[].[ImageId, CreationDate, Name]" --output text
+aws ec2 describe-images --filter Name="name",Values="CentOS Linux 7 x86_64 HVM EBS*" Name="product-code",Values="aw0evgkw8e5c1q413zgy5pjce" \
+    --query "sort_by(Images, &CreationDate)[].[ImageId, CreationDate, Name]" --output text
 
-aws ec2 describe-images --filter Name="name",Values="CentOS Linux 7 x86_64 HVM EBS 1704*" Name="product-code",Values="aw0evgkw8e5c1q413zgy5pjce" \
-    --query "Images[].ImageId" --output text
+aws ec2 describe-images --filter Name="name",Values="CentOS Linux 7 x86_64 HVM EBS*" Name="product-code",Values="aw0evgkw8e5c1q413zgy5pjce" \
+    --query "sort_by(Images, &CreationDate)[-1].ImageId" --output text
 
 # latest amazon ecs-optimized ami
 aws ec2 describe-images --owners "amazon" --filter Name="name",Values="*amazon-ecs-optimized" \
