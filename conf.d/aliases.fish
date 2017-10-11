@@ -23,29 +23,40 @@ alias ..5="cd ../../../../.."
 
 # git #
 #######
-alias gamend='git commit --amend --no-edit; and git push -f'
 alias geck='git checkout'
-alias gmaster='git checkout master'
+alias gaster='git checkout master'
 alias giff='git diff -w --ignore-blank-lines'
 alias gog='git log --stat -1'
-alias gull='git pull --rebase'
 alias gop='git stash pop'
 alias gash='git stash'
 alias gatus='git status'
 alias gush='git push'
 alias gushbranch='git push -u origin'
+function granch -d "actions to create a branch and push to remote"
+    git checkout -b $argv[1];
+    git push -u origin $argv[1]
+end
 function gadd -d "actions for git add"
     git stash;
     and git pull --rebase;
     and git stash pop;
     # $status will be 1 if nothing stashed
     git add $argv[1];
-    and git status
+    and git status;
+end
+function gull -d "actions for git pull"
+    git stash;
+    and git pull --rebase;
+    and git stash pop;
 end
 function gommit -d "actions for git commit"
     git pull;
     and git commit -m "$argv[1]";
-    and git push -f
+    and git push -f;
+end
+function gamend -d "actions for git commit --amend"
+    git commit --amend --no-edit;
+    and git push -f;
 end
 
 # code #
