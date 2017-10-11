@@ -23,7 +23,6 @@ alias ..5="cd ../../../../.."
 
 # git #
 #######
-alias gadd='git stash; and git pull --rebase; and git stash pop; and git add'
 alias gamend='git commit --amend --no-edit; and git push -f'
 alias geck='git checkout'
 alias gmaster='git checkout master'
@@ -35,7 +34,15 @@ alias gash='git stash'
 alias gatus='git status'
 alias gush='git push'
 alias gushbranch='git push -u origin'
-function gommit
+function gadd -d "actions for git add"
+    git stash;
+    and git pull --rebase;
+    and git stash pop;
+    # $status will be 1 if nothing stashed
+    git add $argv[1];
+    and git status
+end
+function gommit -d "actions for git commit"
     git pull;
     and git commit -m "$argv[1]";
     and git push -f
@@ -50,4 +57,5 @@ alias gogo='mkdir -p $GOPATH; and cd $GOPATH'
 alias gopy='cd $CODE_BASE/python/'
 alias gosh='cd $CODE_BASE/shell/'
 # vscode
-alias codefish='code ~/code/shell/github.com/loivis/funfish/'
+alias fishrepo='code ~/code/shell/github.com/loivis/funfish/'
+alias fishlocal='code ~/.config/fish'
