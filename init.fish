@@ -39,6 +39,7 @@ end
 #######
 git config --global core.excludesfile ~/.gitignore_global
 git config --global push.default simple
+git config --global credential.helper osxkeychain
 
 ################################################################################
 if [ ]
@@ -47,6 +48,8 @@ if [ ]
     git config --global user.email "loivis@live.com"
     git config --global user.name "loivis"
     git config --global push.default simple
+    # macos
+    # git config --global credential.helper osxkeychain
     # windows
     # git config --global credential.helper wincred
     # linux

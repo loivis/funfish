@@ -20,21 +20,42 @@ alias ..2="cd ../.."
 alias ..3="cd ../../.."
 alias ..4="cd ../../../.."
 alias ..5="cd ../../../../.."
+alias gdrive="code ~/gdrive"
 
 # git #
 #######
-alias geck='git checkout'
-alias gaster='git checkout master'
+alias geckout='git checkout'
 alias giff='git diff -w --ignore-blank-lines'
 alias glog='git log --stat -1'
 alias gop='git stash pop'
 alias gash='git stash'
 alias gatus='git status'
 alias gush='git push'
-alias gushbranch='git push -u origin'
 function granch -d "actions to create a branch and push to remote"
-    git checkout -b $argv[1];
-    git push -u origin $argv[1]
+    if [ (count $argv) = 0 ]
+        echo "# usage:"
+        echo "create branch: -b branch/name"
+        echo "delete branch: -d branch/name"
+        return
+    end
+    if [ $argv[1] = "-b" ]
+        git checkout -b $argv[2];
+        git push -u origin $argv[2]
+        git branch -a
+    else if [ $argv[1] = "-d" ]
+        git stash;
+        and git checkout master;
+        and git stash pop
+        set -l exist (git ls-remote --heads origin $argv[2])
+        git branch -D $argv[2]
+        if [ "$exist" = "" ]
+            echo "branch $argv[2] doesn't exist on remote repository"
+        else
+            git push -d origin $argv[2]
+            git fetch origin --prune
+        end
+        git branch -a
+    end
 end
 function gadd -d "actions for git add"
     git stash;
@@ -52,11 +73,11 @@ end
 function gommit -d "actions for git commit"
     git pull;
     and git commit -m "$argv[1]";
-    and git push -f;
+    and git push --force-with-lease;
 end
 function gamend -d "actions for git commit --amend"
     git commit --amend --no-edit;
-    and git push -f;
+    and git push --force-with-lease;
 end
 
 # code #
@@ -68,5 +89,5 @@ alias gogo='mkdir -p $GOPATH; and cd $GOPATH'
 alias gopy='cd $CODE_BASE/python/'
 alias gosh='cd $CODE_BASE/shell/'
 # vscode
-alias fishrepo='code ~/code/shell/github.com/loivis/funfish/'
+alias fishremote='code ~/code/shell/github.com/loivis/funfish/'
 alias fishlocal='code ~/.config/fish'
