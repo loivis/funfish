@@ -5,6 +5,10 @@ alias pwgen='pwgen -1Bc 16'
 alias ssh='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
 alias tailf='tail -f'
 alias tmp='cd /tmp'
+function mkcd -d "create new directory and cd to it"
+    mkdir -p $argv[1]
+    and cd $argv[1]
+end
 
 # docker #
 ##########
