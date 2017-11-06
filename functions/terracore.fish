@@ -16,8 +16,8 @@ function terracore -d "wrapper for terraform from hashicorp"
 
     switch $argv[1]
         case plan
-            terraform validate
-            terraform get
+            terraform get;
+            and terraform validate;
     end
-    terraform $argv
+    and terraform $argv
 end
