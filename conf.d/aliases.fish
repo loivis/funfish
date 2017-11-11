@@ -43,6 +43,7 @@ function granch -d "actions to create a branch and push to remote"
         return
     end
     if [ $argv[1] = "-b" ]
+        git pull
         git checkout -b $argv[2];
         git push -u origin $argv[2]
         git branch -a
