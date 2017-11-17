@@ -57,8 +57,8 @@ function granch -d "actions to create a branch and push to remote"
             echo "branch $argv[2] doesn't exist on remote repository"
         else
             git push -d origin $argv[2]
-            git fetch origin --prune
         end
+        git fetch origin --prune
         git branch -a
     end
 end
@@ -77,7 +77,13 @@ function gull -d "actions for git pull"
 end
 function gommit -d "actions for git commit"
     git pull;
-    and git commit -m "$argv[1]";
+    and set -l message ""
+    if [ $argv[1] = "-d" ]
+        set message "DEVOPS-$argv[2]: $argv[3]"
+    else
+        set message "$argv[1]"
+    end
+    git commit -m "$message";
     and git push --force-with-lease;
 end
 function gamend -d "actions for git commit --amend"
