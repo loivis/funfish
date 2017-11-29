@@ -10,9 +10,9 @@ function terracore -d "wrapper for terraform from hashicorp"
         return
     end
 
-    if [ ! -d ".terraform" ]
-        terraform init
-    end
+    # if [ ! -d ".terraform" ]
+    #     terraform init
+    # end
 
     switch $argv[1]
         case plan
