@@ -31,7 +31,7 @@ function ec2ins -d 'list ec2 instances and connect if there is only one'
     end
 
     # list/filter instances and connect if only one match
-    set instances (aws ec2 describe-instances --region eu-west-1 \
+    set instances (aws ec2 describe-instances \
         --filters "Name=instance-state-name,Values=running" \
         --query 'Reservations[].Instances[].[PrivateIpAddress,InstanceId,ImageId,LaunchTime,InstanceType,KeyName,Tags[?Key==`Name`].Value[]|[0]]' \
         --output text | sort -k6 )
