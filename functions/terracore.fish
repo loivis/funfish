@@ -15,9 +15,15 @@ function terracore -d "wrapper for terraform from hashicorp"
     # end
 
     switch $argv[1]
+        case init
+            rm -rf ./.terraform/;
         case plan
-            terraform get;
+            rm -rf ./.terraform/modules/;
+            and terraform get -update;
             and terraform validate;
+            set argv $argv -out=plan.out;
+        case apply
+            set argv $argv plan.out;
     end
     and terraform $argv
 end
