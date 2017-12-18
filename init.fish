@@ -16,6 +16,11 @@ end
 ##########
 umask 022
 
+# awscli #
+##########
+set -x AWS_PROFILE "master"
+set -x AWS_DEFAULT_REGION "eu-west-1"
+
 # python #
 ##########
 # export PYTHONWARNINGS="default"

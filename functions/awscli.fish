@@ -1,5 +1,5 @@
 function awscli -d "notes for awscli commands"
-echo '
+    echo '
 
 # latest ubuntu 16.04 ami
 aws ec2 describe-images --owners "099720109477" --filters Name="root-device-type",Values="ebs" \
@@ -22,6 +22,13 @@ aws ec2 describe-images --owners "amazon" --filter Name="name",Values="*amazon-e
     --query "sort_by(Images, &CreationDate)[-3:].[ImageId, CreationDate, Name]" --output text
 
 aws ec2 describe-images --owners "amazon" --filter Name="name",Values="*amazon-ecs-optimized" \
+    --query "sort_by(Images, &CreationDate)[-1].ImageId" --output text
+
+# latest amazon linux2 ami
+aws ec2 describe-images --owners "amazon" --filter Name="name",Values="amzn2-ami-hvm-*" Name="block-device-mapping.volume-type",Values="gp2" \
+    --query "sort_by(Images, &CreationDate)[-3:].[ImageId, CreationDate, Name]" --output text
+
+aws ec2 describe-images --owners "amazon" --filter Name="name",Values="amzn2-ami-hvm-*" Name="block-device-mapping.volume-type",Values="gp2" \
     --query "sort_by(Images, &CreationDate)[-1].ImageId" --output text
 
 '

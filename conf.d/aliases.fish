@@ -4,7 +4,7 @@ alias lla='ls -al'
 alias pwgen='pwgen -1Bc 16'
 alias ssh='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
 alias tailf='tail -f'
-alias tmp='cd /tmp'
+alias tmp='cd ~/tmp'
 function mkcd -d "create new directory and cd to it"
     mkdir -p $argv[1]
     and cd $argv[1]
@@ -44,12 +44,12 @@ function granch -d "actions to create a branch and push to remote"
     end
     if [ $argv[1] = "-b" ]
         git pull
-        git checkout -b $argv[2];
+        git checkout -b $argv[2]
         git push -u origin $argv[2]
         git branch -a
     else if [ $argv[1] = "-d" ]
-        git stash;
-        and git checkout master;
+        git stash
+        and git checkout master
         and git stash pop
         set -l exist (git ls-remote --heads origin $argv[2])
         git branch -D $argv[2]
@@ -63,32 +63,32 @@ function granch -d "actions to create a branch and push to remote"
     end
 end
 function gadd -d "actions for git add"
-    git stash;
-    and git pull --rebase;
-    and git stash pop;
+    git stash
+    and git pull --rebase
+    and git stash pop
     # $status will be 1 if nothing stashed
-    git add $argv[1];
-    and git status;
+    git add $argv[1]
+    and git status
 end
 function gull -d "actions for git pull"
-    git stash;
-    and git pull --rebase;
-    and git stash pop;
+    git stash
+    and git pull --rebase
+    and git stash pop
 end
 function gommit -d "actions for git commit"
-    git pull;
+    git pull
     and set -l message ""
     if [ $argv[1] = "-d" ]
         set message "DEVOPS-$argv[2]: $argv[3]"
     else
         set message "$argv[1]"
     end
-    git commit -m "$message";
-    and git push --force-with-lease;
+    git commit -m "$message"
+    and git push --force-with-lease
 end
 function gamend -d "actions for git commit --amend"
-    git commit --amend --no-edit;
-    and git push --force-with-lease;
+    git commit --amend --no-edit
+    and git push --force-with-lease
 end
 
 # code #
