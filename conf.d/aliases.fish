@@ -1,7 +1,7 @@
 alias download='cd ~/download'
 alias hej='fuck'
 alias lla='ls -al'
-alias pwgen='pwgen -1Bc 16'
+alias passgen='pwgen -1Bc'
 alias ssh='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
 alias tailf='tail -f'
 alias tmp='cd ~/tmp'
