@@ -20,6 +20,8 @@ umask 022
 ##########
 set -x AWS_PROFILE "master"
 set -x AWS_DEFAULT_REGION "eu-west-1"
+# assume role for amazon-ecr-credential-helper
+set -x AWS_SDK_LOAD_CONFIG true
 
 # python #
 ##########
