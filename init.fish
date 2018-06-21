@@ -8,6 +8,7 @@ set -g GOPATH "$HOME/go"
 mkdir -p $GOPATH/ $GOPATH/bin
 set PATH $GOPATH/bin $PATH
 # set PATH /usr/local/lib/node_modules $PATH
+set PATH "$HOME/dart/flutter/bin" $PATH
 if [ -d /usr/local/opt/python/libexec/bin ]
     set PATH /usr/local/opt/python/libexec/bin $PATH
 end
