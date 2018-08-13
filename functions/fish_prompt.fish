@@ -7,8 +7,8 @@ function fish_prompt -d "Evolving Fish Prompt"
 
     set_color -b black
 
-    __set_user
-    printf " "
+    # __set_user
+    # printf " "
     __set_pwd
     printf " "
     __set_git
