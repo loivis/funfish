@@ -100,5 +100,5 @@ alias gogo='mkdir -p $GOPATH; and cd $GOPATH'
 alias gopy='cd $CODE_BASE/python/'
 alias gosh='cd $CODE_BASE/shell/'
 # vscode
-alias fishremote='code ~/code/shell/github.com/loivis/funfish/'
+alias fishremote='code ~/code/shell/funfish/'
 alias fishlocal='code ~/.config/fish'
