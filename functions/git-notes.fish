@@ -26,6 +26,9 @@ git clean -fx
 # git config
 git config --global user.email "github@kinase.wang"
 git config --global user.name "loivis"
+# with file option
+git config -f ~/.gitconfig.user user.email "github@kinase.wang"
+git config -f ~/.gitconfig.user user.name "loivis"
 # macos
 git config --global credential.helper osxkeychain
 # windows

@@ -1,0 +1,37 @@
+[advice]
+    detachedHead = false
+[alias]
+    a = add
+    ba = branch -a
+    ci = commit
+    co = checkout
+    cp = cherry-pick
+    l = log --pretty=compact --date=relative --topo-order
+    pl = pull --rebase
+    ps = push
+    rb = rebase
+    ri = rebase --interactive
+    rs = reset
+    st = status
+[color]
+    ui = auto
+[core]
+    editor = vi
+    excludesfile = ~/.gitignore
+[fetch]
+    prune = true
+[include]
+    path = ~/.gitconfig.user
+[pretty]
+    compact = "%C(240)%h %C(250)%an%C(240) %C(240)%ad%C(auto)%d%C(255) %s%C(reset)"
+[rebase]
+    autosquash = true
+    missingCommitsCheck = warn
+[rerere]
+    enabled = true
+[user]
+    useConfigOnly = true
+[push]
+	default = simple
+[credential]
+	helper = osxkeychain

@@ -1,0 +1,66 @@
+# secrets #
+###########
+*.pem
+
+# vim #
+#######
+*.swp
+*.netrwhist
+
+# go #
+######
+gin-bin
+
+# node.js #
+###########
+node/
+node_modules/
+npm-debug.log.*
+
+# ide #
+#######
+*.iml
+.idea/
+.classpath
+.settings/
+.project
+.vscode/
+
+# compiled source #
+###################
+__pycache__/
+*.pyc
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# binary #
+##########
+*.7z
+*.dmg
+*.gz
+*.tgz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+bin/
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Flutter #
+###########
+Podfile*
+.symlinks/

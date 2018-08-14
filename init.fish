@@ -36,29 +36,9 @@ set -g PYTHONWARNINGS "ignore"
 if [ ! -e ~/.vim/autoload/pathogen.vim ]
     mkdir -p ~/.vim/autoload ~/.vim/bundle
     curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-    git clone https://github.com/hashivim/vim-hashicorp-tools.git ~/.vim/bundle/vim-hashicorp-tools
     git clone https://github.com/ekalinin/Dockerfile.vim.git ~/.vim/bundle/Dockerfile
     git clone https://github.com/fatih/vim-go.git ~/.vim/bundle/vim-go
-end
-
-# git #
-#######
-git config --global core.excludesfile ~/.gitignore
-git config --global push.default simple
-git config --global credential.helper osxkeychain
-
-################################################################################
-if [ ]
-    echo "those shall NEVER be executed"
-    git config --global user.email "github@kinase.wang"
-    git config --global user.name "loivis"
-    # macos
-    # git config --global credential.helper osxkeychain
-    # windows
-    # git config --global credential.helper wincred
-    # linux
-    # git config --global credential.helper cache
-    # 1 year = 60*60*24*365
-    # set 10 years
-    # git config --global credential.helper 'cache --timeout=315360000'
+    git clone https://github.com/hashivim/vim-hashicorp-tools.git ~/.vim/bundle/vim-hashicorp-tools
+    git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree
+    git clone https://github.com/Xuyuanp/nerdtree-git-plugin.git ~/.vim/bundle/nerdtree-git-plugin
 end

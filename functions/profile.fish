@@ -1,9 +1,18 @@
 function profile -d "download profiles from gist"
-    echo "download vimrc"
-    set -l vimrc "https://gist.githubusercontent.com/loivis/5f734a1eafe9cc03b1e62a879e422dcf/raw/vimrc"
+    echo "download .vimrc"
+    set -l vimrc "https://raw.githubusercontent.com/loivis/funfish/master/profiles/.vimrc"
     curl -sL -o $HOME/.vimrc $vimrc
 
-    echo "download gitignore"
-    set -l gitignore "https://gist.github.com/loivis/5f734a1eafe9cc03b1e62a879e422dcf/raw/gitignore"
+    echo "download vim color scheme: jellybeans"
+    mkdir -p $HOME/.vim/colors
+    set -l jellybeans "https://raw.githubusercontent.com/nanotech/jellybeans.vim/master/colors/jellybeans.vim"
+    curl -sL -o $HOME/.vim/colors/jellybeans.vim $jellybeans
+
+    echo "download .gitconfig"
+    set -l gitconfig "https://raw.githubusercontent.com/loivis/funfish/master/profiles/.gitconfig"
+    curl -sL -o $HOME/.gitconfig $gitconfig
+
+    echo "download .gitignore"
+    set -l gitignore "https://raw.githubusercontent.com/loivis/funfish/master/profiles/.gitignore"
     curl -sL -o $HOME/.gitignore $gitignore
 end
