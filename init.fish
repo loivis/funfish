@@ -19,10 +19,10 @@ umask 022
 
 # awscli #
 ##########
-set -x AWS_PROFILE "master"
-set -x AWS_DEFAULT_REGION "eu-west-1"
-# assume role for amazon-ecr-credential-helper
-set -x AWS_SDK_LOAD_CONFIG true
+# set -x AWS_PROFILE "master"
+# set -x AWS_DEFAULT_REGION "eu-west-1"
+# # assume role for amazon-ecr-credential-helper
+# set -x AWS_SDK_LOAD_CONFIG true
 
 # python #
 ##########
@@ -35,27 +35,23 @@ set -g PYTHONWARNINGS "ignore"
 #######
 if [ ! -e ~/.vim/autoload/pathogen.vim ]
     mkdir -p ~/.vim/autoload ~/.vim/bundle
-    #git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
     curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
     git clone https://github.com/hashivim/vim-hashicorp-tools.git ~/.vim/bundle/vim-hashicorp-tools
     git clone https://github.com/ekalinin/Dockerfile.vim.git ~/.vim/bundle/Dockerfile
     git clone https://github.com/fatih/vim-go.git ~/.vim/bundle/vim-go
-    #pip3 install jedi && git clone https://github.com/davidhalter/jedi-vim.git ~/.vim/bundle/jedi-vim
 end
 
 # git #
 #######
-git config --global core.excludesfile ~/.gitignore_global
+git config --global core.excludesfile ~/.gitignore
 git config --global push.default simple
 git config --global credential.helper osxkeychain
 
 ################################################################################
 if [ ]
     echo "those shall NEVER be executed"
-    git config --global core.excludesfile ~/.gitignore_global
-    git config --global user.email "loivis@live.com"
+    git config --global user.email "github@kinase.wang"
     git config --global user.name "loivis"
-    git config --global push.default simple
     # macos
     # git config --global credential.helper osxkeychain
     # windows

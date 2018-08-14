@@ -1,5 +1,5 @@
 function git-notes -d "notes for git cli command"
-echo '
+    echo '
 
 # create new branch and push to remote
 git checkout -b branch/name
@@ -23,5 +23,17 @@ git clean -fd
 git clean -fX
 git clean -fx
 
+# git config
+git config --global user.email "github@kinase.wang"
+git config --global user.name "loivis"
+# macos
+git config --global credential.helper osxkeychain
+# windows
+git config --global credential.helper wincred
+# linux
+git config --global credential.helper cache
+# 1 year = 60*60*24*365
+# set 10 years
+git config --global credential.helper 'cache --timeout=315360000'
 '
 end
