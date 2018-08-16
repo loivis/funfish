@@ -1,18 +1,58 @@
 [advice]
     detachedHead = false
 [alias]
+    ##############################
     a = add
+    aa = add .
+    ##############################
+    b = branch
     ba = branch -a
-    ci = commit
+    bd = branch -D
+    ##############################
+    cm = commit -m
+    cane = commit --amend --no-edit
+    ##############################
     co = checkout
+    cob = checkout -b
+    com = checkout master
+    cos = checkout stage
+    ##############################
     cp = cherry-pick
-    l = log --pretty=compact --date=relative --topo-order
-    pl = pull --rebase
+    ##############################
+    cl = clone
+    ##############################
+    df = diff -w --ignore-blank-lines
+    dfc = diff -w --ignore-blank-lines
+    ##############################
+    f = fetch
+    fo = fetch origin
+    fu = fetch upstream
+    ##############################
+    ls = log --pretty=compact --date=relative --topo-order
+    ls1 = log -1 --stat
+    ##############################
+    pl = pull
+    pr = pull --rebase
+    ##############################
     ps = push
+    psf = push --force-with-lease
+    ##############################
+    pso = push -u origin
+    ##############################
     rb = rebase
-    ri = rebase --interactive
+    rba = rebase --abort
+    rbc = rebase --continue
+    rbi = rebase --interactive
+    ##############################
     rs = reset
+    ##############################
     st = status
+    ##############################
+    la = "!git config -l | grep alias | cut -c 7-"
+    sh = !sh -c 'echo $@' -
+    func = "!f() { echo \"$@\"; }; f"
+    acp = !sh -c 'git add . && git status && git commit -m \"$1\" && git push --force-with-lease && git log -1' -
+    acap = "!git add . && git status && git commit --amend --no-edit && git push --force-with-lease && git log -1"
 [color]
     ui = auto
 [core]
@@ -29,9 +69,10 @@
     missingCommitsCheck = warn
 [rerere]
     enabled = true
+    autoupdate = true
 [user]
     useConfigOnly = true
 [push]
-	default = simple
+    default = simple
 [credential]
-	helper = osxkeychain
+    helper = osxkeychain

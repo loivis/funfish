@@ -96,7 +96,8 @@ abbr -a g git
 ########
 # path
 alias godocker='cd $HOME/docker'
-alias gogo='mkdir -p $GOPATH; and cd $GOPATH'
+alias gogo='cd $HOME/go/src'
+alias gotv4='cd $HOME/go/src/github.com/TV4'
 alias gopy='cd $HOME/python/'
 alias gosh='cd $HOME/shell/'
 # vscode
