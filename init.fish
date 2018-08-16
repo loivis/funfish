@@ -1,12 +1,5 @@
-# variable #
-############
-set -g CODE_BASE "$HOME/code"
-set -g GOPATH "$HOME/go"
-
 # PATH #
 ########
-mkdir -p $GOPATH/ $GOPATH/bin
-set PATH $GOPATH/bin $PATH
 # set PATH /usr/local/lib/node_modules $PATH
 set PATH "$HOME/dart/flutter/bin" $PATH
 if [ -d /usr/local/opt/python/libexec/bin ]
@@ -27,10 +20,16 @@ umask 022
 # python #
 ##########
 # export PYTHONWARNINGS="default"
-set -g PYTHONWARNINGS "ignore"
+# set -g PYTHONWARNINGS "ignore"
 # eval "$(pyenv init -)"
 # eval "$(pyenv virtualenv-init -)"
 
+# brew #
+########
+for formulae in "ag" "fzf" "tig"
+    which $formulae >/dev/null
+    or brew install $formulae
+end
 # vim #
 #######
 if [ ! -e ~/.vim/autoload/pathogen.vim ]
