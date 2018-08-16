@@ -246,3 +246,6 @@ let g:go_fmt_command = "goimports"
 
 " Map gr to :GoRename
 nnoremap <silent> gr :GoRename<CR>
+
+" custom key maps
+nnoremap json :%! jq . <enter>
