@@ -1,5 +1,6 @@
 alias download='cd ~/download'
 alias hej='fuck'
+alias https='http --default-scheme=https'
 alias lla='ls -al'
 alias passgen='pwgen -1Bc'
 alias ssh='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'

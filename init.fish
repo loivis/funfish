@@ -26,7 +26,7 @@ umask 022
 
 # brew #
 ########
-for formulae in "ag" "fzf" "tig"
+for formulae in "ag" "fzf" "httpie" "tig"
     which $formulae >/dev/null
     or brew install $formulae
 end
