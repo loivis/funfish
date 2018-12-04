@@ -20,6 +20,7 @@ npm-debug.log.*
 # ide #
 #######
 *.iml
+.elixir_ls/
 .idea/
 .classpath
 .settings/
