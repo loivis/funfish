@@ -6,6 +6,8 @@ set PATH "$HOME/dart/flutter/bin" $PATH
 if [ -d /usr/local/opt/python/libexec/bin ]
     set PATH /usr/local/opt/python/libexec/bin $PATH
 end
+# set CDPATH
+set CDPATH . $HOME $HOME/go/src/github.com/ $CDPATH
 
 # common #
 ##########

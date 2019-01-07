@@ -96,11 +96,8 @@ abbr -a g git
 # code #
 ########
 # path
-alias godocker='cd $HOME/docker'
-alias gogo='cd $HOME/go/src'
-alias gotv4='cd $HOME/go/src/github.com/TV4'
-alias gopy='cd $HOME/python/'
-alias gosh='cd $HOME/shell/'
+alias gosrc='cd $HOME/go/src'
+
 # vscode
 alias fishremote='code ~/shell/funfish/'
 alias fishlocal='code ~/.config/fish'
