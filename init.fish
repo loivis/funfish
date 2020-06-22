@@ -2,10 +2,12 @@
 ########
 # set PATH /usr/local/lib/node_modules $PATH
 set PATH "$HOME/go/bin" $PATH
+set PATH "$HOME/.cargo/bin" $PATH
 set PATH "$HOME/dart/flutter/bin" $PATH
 if [ -d /usr/local/opt/python/libexec/bin ]
     set PATH /usr/local/opt/python/libexec/bin $PATH
 end
+
 # set CDPATH
 set CDPATH . $HOME $HOME/go/src/github.com/ $CDPATH
 
@@ -26,6 +28,10 @@ umask 022
 # set -g PYTHONWARNINGS "ignore"
 # eval "$(pyenv init -)"
 # eval "$(pyenv virtualenv-init -)"
+
+# vault
+set -x VAULT_ADDR https://vault.b17g.services
+set -x VAULT_FORMAT json
 
 # brew #
 ########

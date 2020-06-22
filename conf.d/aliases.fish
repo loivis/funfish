@@ -6,6 +6,9 @@ alias passgen='pwgen -1Bc'
 alias ssh='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
 alias tailf='tail -f'
 alias tmp='cd ~/tmp'
+alias opsbox='$HOME/python/bbr-infrastructure/bin/opsbox'
+alias form='$HOME/python/bbr-infrastructure/bin/terraform'
+alias generate='$HOME/python/bbr-infrastructure/bin/terraform-generate'
 function mkcd -d "create new directory and cd to it"
     mkdir -p $argv[1]
     and cd $argv[1]
