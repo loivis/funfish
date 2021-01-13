@@ -47,3 +47,9 @@ alias fishlocal='code ~/.config/fish'
 
 # go
 alias gomain='go run main.go'
+
+# terragrunt
+alias tg="AWS_SDK_LOAD_CONFIG=1 terragrunt"
+alias tgp="tg plan"
+alias tga="tg apply"
+alias tgaa="tg apply -auto-approve"
