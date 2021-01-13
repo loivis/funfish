@@ -49,7 +49,6 @@ __pycache__/
 *.rar
 *.tar
 *.zip
-bin/
 
 # OS generated files #
 ######################
