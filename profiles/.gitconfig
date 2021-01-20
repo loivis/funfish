@@ -16,10 +16,6 @@ cv = commit -v
 cam = commit --amend
 can = commit --amend --no-edit
 ##############################
-co = checkout
-com = checkout master
-cos = checkout stage
-##############################
 cp = cherry-pick
 ##############################
 cl = clone
@@ -45,18 +41,24 @@ psf = push --force-with-lease
 ##############################
 pso = push -u origin
 ##############################
-rb = rebase
-rba = rebase --abort
-rbc = rebase --continue
-rbi = rebase --interactive
+bs = rebase
+bsa = rebase --abort
+bsc = rebase --continue
+bsi = rebase --interactive
+bsm = rebase master
 ##############################
-rm = remote
-rmv = remote -v
+mt = remote
+mtv = remote -v
 ##############################
-rs = reset
-rsh = reset --hard
+store = restore
+##############################
+set = reset
+seth = reset --hard
 ##############################
 st = status
+##############################
+s = switch
+sm = switch master
 ##############################
 la = "!git config -l | grep alias | cut -c 7-"
 sh = !sh -c 'echo $@' -
@@ -64,7 +66,7 @@ func = "!f() { echo \"$@\"; }; f"
 acp = !sh -c 'git add . && git status && git commit -m \"$1\" && git push --force-with-lease && git log -1' -
 acap = "!git add . && git status && git commit --amend --no-edit && git push --force-with-lease && git log -1"
 bx = !sh -c 'git checkout master && git branch -D $1 && git push -d origin $1' -
-cob = !sh -c 'git checkout -b $1 && git push --set-upstream origin $1' -
+sc = !sh -c 'git switch -c $1 && git push --set-upstream origin HEAD' -
 sync = !sh -c 'git fetch upstream && git checkout $1 && git merge upstream/$1' -
 
 [color]
