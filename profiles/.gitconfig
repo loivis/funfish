@@ -12,6 +12,7 @@ ba = branch -a
 ##############################
 cf = commit --fixup
 cm = commit -m
+csm = commit -S -m
 cv = commit -v
 cam = commit --amend
 can = commit --amend --no-edit
