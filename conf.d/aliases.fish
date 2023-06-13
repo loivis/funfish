@@ -1,14 +1,18 @@
 alias download='cd ~/download'
+alias form='$HOME/python/bbr-infrastructure/bin/terraform'
+alias generate='$HOME/python/bbr-infrastructure/bin/terraform-generate'
 alias hej='fuck'
 alias https='http --default-scheme=https'
 alias lla='ls -al'
+alias n='npm'
+alias kc='kubectl'
+alias opsbox='$HOME/python/bbr-infrastructure/bin/opsbox'
 alias passgen='pwgen -1Bc'
+alias repo="open (git remote get-url --push origin | awk '{print $2}' | sed 's#git@github.com:#https://github.com/#;s#\.git##')"
 alias ssh='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
 alias tailf='tail -f'
 alias tmp='cd ~/tmp'
-alias opsbox='$HOME/python/bbr-infrastructure/bin/opsbox'
-alias form='$HOME/python/bbr-infrastructure/bin/terraform'
-alias generate='$HOME/python/bbr-infrastructure/bin/terraform-generate'
+alias uuid="uuidgen | tr -d - | tr -d '\n' | tr '[:upper:]' '[:lower:]' | pbcopy && pbpaste && echo"
 function mkcd -d "create new directory and cd to it"
     mkdir -p $argv[1]
     and cd $argv[1]
@@ -35,6 +39,7 @@ alias gdrive="code ~/gdrive"
 # git #
 #######
 abbr -a g git
+alias cpr="gh pr create --web"
 
 # code #
 ########
@@ -47,3 +52,9 @@ alias fishlocal='code ~/.config/fish'
 
 # go
 alias gomain='go run main.go'
+
+# terragrunt
+alias tg="AWS_SDK_LOAD_CONFIG=1 terragrunt"
+alias tgp="tg plan"
+alias tga="tg apply"
+alias tgaa="tg apply -auto-approve"
