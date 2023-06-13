@@ -1,90 +1,138 @@
 [advice]
-    detachedHead = false
+detachedHead = false
+skippedCherryPicks = false
+
 [alias]
-    ##############################
-    a = add
-    aa = add -A .
-    af = add -f
-    ##############################
-    b = branch
-    ba = branch -a
-    ##############################
-    cf = commit --fixup
-    cm = commit -m
-    cv = commit -v
-    cam = commit --amend
-    can = commit --amend --no-edit
-    ##############################
-    co = checkout
-    com = checkout master
-    cos = checkout stage
-    ##############################
-    cp = cherry-pick
-    ##############################
-    cl = clone
-    ##############################
-    df = diff -w --ignore-blank-lines
-    dfc = diff -w --ignore-blank-lines --cached
-    ##############################
-    f = fetch
-    fo = fetch origin
-    fu = fetch upstream
-    ##############################
-    ls = log --pretty=compact --date=relative --topo-order -11
-    ls1 = log -1 --stat
-    ##############################
-    mg = merge
-    mgs = merge stage
-    ##############################
-    pl = pull
-    pr = pull --rebase
-    ##############################
-    ps = push
-    psf = push --force-with-lease
-    ##############################
-    pso = push -u origin
-    ##############################
-    rb = rebase
-    rba = rebase --abort
-    rbc = rebase --continue
-    rbi = rebase --interactive
-    ##############################
-    rm = remote
-    rmv = remote -v
-    ##############################
-    rs = reset
-    rsh = reset --hard
-    ##############################
-    st = status
-    ##############################
-    la = "!git config -l | grep alias | cut -c 7-"
-    sh = !sh -c 'echo $@' -
-    func = "!f() { echo \"$@\"; }; f"
-    acp = !sh -c 'git add . && git status && git commit -m \"$1\" && git push --force-with-lease && git log -1' -
-    acap = "!git add . && git status && git commit --amend --no-edit && git push --force-with-lease && git log -1"
-    bx = !sh -c 'git checkout master && git branch -D $1 && git push -d origin $1' -
-    cob = !sh -c 'git checkout -b $1 && git push --set-upstream origin $1' -
-    sync = !sh -c 'git fetch upstream && git checkout $1 && git merge upstream/$1' -
+##############################
+a = add
+aa = add -A .
+af = add -f
+##############################
+b = branch
+ba = branch -a
+bd = branch -D
+##############################
+co = checkout
+##############################
+cf = commit --fixup
+csf = commit -S --fixup
+cm = commit -m
+csm = commit -S -m
+cv = commit -v
+csv = commit -S -v
+cam = commit --amend
+csam = commit -S --amend
+can = commit --amend --no-edit
+csan = commit -S --amend --no-edit
+##############################
+cp = cherry-pick
+##############################
+cl = clone
+##############################
+df = diff -w --ignore-blank-lines
+dfc = diff -w --ignore-blank-lines --cached
+##############################
+f = fetch
+fo = fetch origin
+fu = fetch upstream
+##############################
+ls = log --pretty=compact --date=relative --topo-order -11
+ls1 = log -1 --stat
+##############################
+mg = merge
+mgs = merge stage
+##############################
+pl = pull
+##############################
+ps = push
+psf = push --force-with-lease
+##############################
+pso = push -u origin
+##############################
+bs = rebase
+bsa = rebase --abort
+bsc = rebase --continue
+bsi = rebase --exec 'git commit --amend --no-edit -n -S' -i
+##############################
+mt = remote
+mtv = remote -v
+##############################
+store = restore
+##############################
+rs = reset
+rsh = reset --hard
+rshm = reset --hard main
+##############################
+st = status
+##############################
+s = switch
+##############################
+la = "!git config -l | grep alias | cut -c 7-"
+sh = !sh -c 'echo $@' -
+func = "!f() { echo \"$@\"; }; f"
+acp = !sh -c 'git add . && git status && git commit -m \"$1\" && git push --force-with-lease && git log -1' -
+acap = "!git add . && git status && git commit --amend --no-edit && git push --force-with-lease && git log -1"
+bsm = "!git rebase --exec 'git commit --amend --no-edit -n -S' $(git symbolic-ref refs/remotes/origin/HEAD | xargs basename)"
+bsmi = "!git rebase --exec 'git commit --amend --no-edit -n -S' -i $(git symbolic-ref refs/remotes/origin/HEAD | xargs basename)"
+bx = !sh -c 'git switch main || git switch master && git branch -D $1 && git push -d origin $1' -
+gone = !sh -c 'git branch -vv | grep origin | grep gone | awk \"{print \\$1}\" | xargs git branch -D && git branch -vv'
+open = !sh -c 'git remote get-url origin | sed '"s#git@github.com:#https://github.com/#"' | xargs open'
+pr = "!git pull --rebase && git ls"
+sc = !sh -c 'git switch -c $1 && git push --set-upstream origin HEAD' -
+sm = "!git switch main || git switch master"
+smx = "!branch=$(git rev-parse --abbrev-ref HEAD); git switch main 2>/dev/null || git switch master && base=$(git rev-parse --abbrev-ref HEAD); if [ "$branch" != "$base" ]; then git branch -D $branch; fi"
+sync = !sh -c 'git fetch upstream && git checkout $1 && git merge upstream/$1' -
+
 [color]
-    ui = auto
+ui = auto
+
 [core]
-    editor = vi
-    excludesfile = ~/.gitignore
+editor = vi
+excludesfile = ~/.gitignore
+
 [fetch]
-    prune = true
+prune = true
+
 [include]
-    path = ~/.gitconfig.user
+path = ~/.gitconfig.user
+
 [pretty]
-    compact = "%C(240)%h %C(250)%an%C(240) %C(240)%ad%C(auto)%d%C(255) %s%C(reset)"
+compact = "%C(240)%h %C(250)%an%C(240) %C(240)%ad%C(auto)%d%C(255) %s%C(reset)"
+
 [rebase]
-    autosquash = true
-    missingCommitsCheck = warn
+autosquash = true
+missingCommitsCheck = warn
+
 [rerere]
-    enabled = true
-    autoupdate = true
+enabled = true
+autoupdate = true
+
 [user]
-    useConfigOnly = true
+useConfigOnly = true
+
 [push]
-    default = simple
+default = simple
+followTags = true
+
 [credential]
-    helper = osxkeychain
+helper = osxkeychain
+
+[merge]
+ff = only
+
+[status]
+showUntrackedFiles = all
+
+[log]
+decorate = true
+abbrevCommit = true
+showSignature = false
+
+[url "git@github.com:northvolt"]
+insteadOf = https://github.com/northvolt
+
+[init]
+defaultBranch = main
+
+[gpg]
+format = ssh
