@@ -11,6 +11,7 @@ af = add -f
 b = branch
 ba = branch -a
 bd = branch -D
+bv = branch -vv
 ##############################
 co = checkout
 ##############################
@@ -33,8 +34,7 @@ df = diff -w --ignore-blank-lines
 dfc = diff -w --ignore-blank-lines --cached
 ##############################
 f = fetch
-fo = fetch origin
-fu = fetch upstream
+fap = fetch --all --prune
 ##############################
 ls = log --pretty=compact --date=relative --topo-order -11
 ls1 = log -1 --stat
@@ -69,19 +69,58 @@ s = switch
 ##############################
 la = "!git config -l | grep alias | cut -c 7-"
 sh = !sh -c 'echo $@' -
-func = "!f() { echo \"$@\"; }; f"
 acp = !sh -c 'git add . && git status && git commit -m \"$1\" && git push --force-with-lease && git log -1' -
 acap = "!git add . && git status && git commit --amend --no-edit && git push --force-with-lease && git log -1"
 bsm = "!git rebase --exec 'git commit --amend --no-edit -n -S' $(git symbolic-ref refs/remotes/origin/HEAD | xargs basename)"
 bsmi = "!git rebase --exec 'git commit --amend --no-edit -n -S' -i $(git symbolic-ref refs/remotes/origin/HEAD | xargs basename)"
-bx = !sh -c 'git switch main || git switch master && git branch -D $1 && git push -d origin $1' -
 gone = !sh -c 'git branch -vv | grep origin | grep gone | awk \"{print \\$1}\" | xargs git branch -D && git branch -vv'
 open = !sh -c 'git remote get-url origin | sed '"s#git@github.com:#https://github.com/#"' | xargs open'
 pr = "!git pull --rebase && git ls"
 sc = !sh -c 'git switch -c $1 && git push --set-upstream origin HEAD' -
-sm = "!git switch main || git switch master"
-smx = "!branch=$(git rev-parse --abbrev-ref HEAD); git switch main 2>/dev/null || git switch master && base=$(git rev-parse --abbrev-ref HEAD); if [ "$branch" != "$base" ]; then git branch -D $branch; fi"
 sync = !sh -c 'git fetch upstream && git checkout $1 && git merge upstream/$1' -
+
+# switch branches
+switch-branch = "!fn() { \
+    for BR in \"$@\"; do \
+        git switch \"$BR\" 2>/dev/null && git pr && return 0; \
+    done; \
+    echo \"None of the specified branches exist: $*\"; \
+    return 1; \
+}; fn"
+
+d = "!git switch-branch dev develop"
+dd = "!f() { \
+	PREV=$(git rev-parse --abbrev-ref HEAD); \
+	git d && git branch -D \"$PREV\"; \
+}; f"
+
+m = "!git switch-branch main master"
+md = "!fn() { \
+    PREV=$(git rev-parse --abbrev-ref HEAD); \
+    git m && git branch -D \"$PREV\"; \
+}; fn"
+
+# deletes local branches that no longer exist on the remote
+gone = "!fn() { \
+	git m && git fetch --all --prune >/dev/null 2>&1; \
+    git branch -vv | awk '/: gone]/ {print $1}' | xargs -r -n1 git branch -D; \
+	git branch -vv; \
+}; fn"
+
+# set user name and email based on remote org
+#
+id = "!fn() { \
+    remote=$(git config --get remote.origin.url 2>/dev/null); \
+    if [[ $remote == *gitlab.com:abios/* ]] || [[ $remote == *gitlab.com/abios/* ]]; then \
+        git config user.name 'Xiaowei Wang'; \
+        git config user.email 'xiaowei.wang@abios.se'; \
+    fi; \
+    git config user.name; \
+    git config user.email; \
+}; fn"
+
+# template for alias function
+template = "!fn() { echo \"$@\"; }; fn"
 
 [color]
 ui = auto
@@ -108,6 +147,9 @@ enabled = true
 autoupdate = true
 
 [user]
+email = loivis@gmail.com
+name = loivis
+signingkey = /Users/x/.ssh/id_rsa
 useConfigOnly = true
 
 [push]
@@ -131,8 +173,14 @@ showSignature = false
 [url "git@github.com:northvolt"]
 insteadOf = https://github.com/northvolt
 
+[url "git@gitlab.com:abios"]
+insteadOf = https://gitlab.com/abios
+
 [init]
 defaultBranch = main
 
 [gpg]
 format = ssh
+
+[commit]
+gpgsign = true
