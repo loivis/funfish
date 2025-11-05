@@ -5,7 +5,9 @@ alias hej='fuck'
 alias https='http --default-scheme=https'
 alias lla='ls -al'
 alias n='npm'
-alias kc='kubectl'
+alias kube='kubectl'
+alias kubedev='kubectl config set-context --current --namespace=develop'
+alias kubeprod='kubectl config set-context --current --namespace=production'
 alias opsbox='$HOME/python/bbr-infrastructure/bin/opsbox'
 alias passgen='pwgen -1Bc'
 alias repo="open (git remote get-url --push origin | awk '{print $2}' | sed 's#git@github.com:#https://github.com/#;s#\.git##')"
@@ -39,6 +41,7 @@ alias gdrive="code ~/gdrive"
 #######
 abbr -a g git
 alias cpr="gh pr create --web"
+alias mr="glab mr create --fill --fill-commit-body --no-editor --remove-source-branch --web"
 
 # code #
 ########
